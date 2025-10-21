@@ -1,0 +1,48 @@
+@import url(normalize.css);
+@import url(reset.css);
+
+body {
+    height: 100dvh;
+    background-image: url(../img/fondoespacio.avif);
+    background-size: cover;
+
+}
+
+
+main {
+    height: 80dvh;
+    display: flex;
+    flex: content;
+    justify-content: center;
+    align-items: center;
+}
+.main__nave {
+    width: 400px;
+}
+footer{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+}
+
+.section__mandos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+
+}
+.footer__teclaQ {
+}
+.footer__teclas {
+}
+.footer__teclaE {
+}
+
+.encender::before{
+    
+}

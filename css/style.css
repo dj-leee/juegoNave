@@ -10,20 +10,27 @@ body {
 main {
     height: 80dvh;
     display: flex;
-    flex: content;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+.main__motorEncendido{
+    width: 120px;
+    position: relative;
+    transform: translateY(-60px);
+    display: none;
 }
 
 .main__nave {
     width: 400px;
-    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+    /* transition: all 0.3s ease; */
 }
 
 /* Efecto cuando la nave está encendida */
 .encender {
-    filter: brightness(1.5) drop-shadow(0 0 30px rgba(255, 255, 100, 0.8));
-    transform: scale(1.05);
+    display: block;
 }
 
 footer {

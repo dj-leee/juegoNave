@@ -1,20 +1,43 @@
+// VARIABLES SIMPLES Y CONSTANTES
 const nave = document.getElementById("nave")
-const btEncender = document.getElementById("teclaE")
-const btApagar = document.getElementById("teclaQ")
+const estructura = document.getElementById("estructura")
+const motor = document.getElementById("motor")
+const motorEncendido = motor.classList.contains("encender")
+
+let posY = 0
+
+
 
 document.addEventListener("keydown", (event) => {
-    if (event.key === "e" || event.key === "E") {
-        nave.classList.add("encender")
-    } else if (event.key === "q" || event.key === "Q") {
-        nave.classList.remove("encender")
-    }
-    
-}) // <- Faltaba cerrar aquí
+switch (event.key.toLowerCase()) {
+    case "e":
+        motor.classList.add("encender")
+        break;
 
-btEncender.addEventListener("click", () => {
-    nave.classList.add("encender")
-})
+    case "q":
+        motor.classList.remove("encender")
+        break;
+        m
+    case "arrowup":
+        case "w":
+        if (motor.classList.contains("encender")) {
+        posY -= 10
+        estructura.style.transform = `translateY(${posY}px)`
+        }
+        break;
 
-btApagar.addEventListener("click", () => {
-    nave.classList.remove("encender")
-})
+    case "arrowdown":
+        case "s":
+        if (motor.classList.contains("encender")) {
+        posY += 10
+        estructura.style.transform = `translateY(${posY}px)`
+        }
+        break;
+
+    default:
+        console.log("Tecla no reconocida");
+        break;
+}
+}) 
+
+

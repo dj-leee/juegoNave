@@ -1,6 +1,18 @@
 @import url(normalize.css);
 @import url(reset.css);
 
+
+
+@keyframes parpadeo {
+    0% { opacity: 1;
+        transform: scale(1) translateY(-100px); }
+    50% { opacity: 0; 
+        transform: scale(0.5) translateY(-50px);
+        }
+    100% { opacity: 1; 
+        transform: scale(1) translateY(-100px);}
+}
+
 body {
     height: 100dvh;
     background-image: url(../img/fondoespacio.avif);
@@ -13,12 +25,14 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    transform-origin: center;
 }
 .main__motorEncendido{
     width: 120px;
     position: relative;
     transform: translateY(-60px);
     display: none;
+    animation: parpadeo 0.1s infinite;;
 }
 
 .main__nave {

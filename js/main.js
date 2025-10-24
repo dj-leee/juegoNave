@@ -22,13 +22,26 @@ class NaveEspacial {
   // Metodo para mover la nave en una direccion especifica
   mover() {
     if (this.motor) {
-        avanzar -= this.velocidad;
-        estructura.style.transform = `rotate(${rotacion}deg) translateY(${avanzar}px)`;
+        switch(this.direccion) {
+            case "norte":
+                posY -= this.velocidad;
+                break;
+            case "sur":
+                posY += this.velocidad;
+                break;
+            case "este":
+                posX += this.velocidad;
+                break;
+            case "oeste":
+                posX -= this.velocidad;
+                break;
+        }
+        estructura.style.transform = `translate(${posX}px, ${posY}px) rotate(${rotacion}deg)`;
     }
   }
   // Metodo para girar la nave
     girar(direcciongiro){
-        if (this.motor) {
+         if (this.motor) {
         switch(direcciongiro) {
             case "norte":
                 rotacion = 0;
@@ -43,7 +56,7 @@ class NaveEspacial {
                 rotacion = -90;
                 break;
         }
-        estructura.style.transform = `rotate(${rotacion}deg) translateY(${avanzar}px)`;
+        estructura.style.transform = `translate(${posX}px, ${posY}px) rotate(${rotacion}deg)`;
         this.direccion = direcciongiro;
     }
     }
@@ -71,6 +84,8 @@ const motor = document.getElementById("motor");
 const motorEncendido = motor.classList.contains("encender");
 let avanzar = 0;
 let rotacion = 0;
+let posX = 0;
+let posY = 0;
 // Segun la pulsacion de teclas, vamos a llamar a los metodos de la clase NaveEspacial
 // Funcion de escuchar si pulsan una tecla
 document.addEventListener("keydown", (event) => {

@@ -25,7 +25,6 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    transform-origin: center;
 }
 .main__motorEncendido{
     width: 120px;

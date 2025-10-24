@@ -20,20 +20,32 @@ class NaveEspacial {
   }
 
   // Metodo para mover la nave en una direccion especifica
-  mover(direccion) {
+  mover() {
     if (this.motor) {
-      this.direccion = direccion;
-
-      avanzar -= this.velocidad;
-
-      estructura.style.transform = `translateY(${avanzar}px)`;
+        avanzar -= this.velocidad;
+        estructura.style.transform = `rotate(${rotacion}deg) translateY(${avanzar}px)`;
     }
   }
   // Metodo para girar la nave
     girar(direcciongiro){
-        if(direcciongiro === "sur"){
-            estructura.style.transform = `rotate(90deg) translateY(${avanzar}px) origin: center bottom;`
+        if (this.motor) {
+        switch(direcciongiro) {
+            case "norte":
+                rotacion = 0;
+                break;
+            case "sur":
+                rotacion = 180;
+                break;
+            case "este":
+                rotacion = 90;
+                break;
+            case "oeste":
+                rotacion = -90;
+                break;
         }
+        estructura.style.transform = `rotate(${rotacion}deg) translateY(${avanzar}px)`;
+        this.direccion = direcciongiro;
+    }
     }
 
   // Metodo para cambiar la velocidad de la nave
@@ -58,6 +70,7 @@ const estructura = document.getElementById("estructura");
 const motor = document.getElementById("motor");
 const motorEncendido = motor.classList.contains("encender");
 let avanzar = 0;
+let rotacion = 0;
 // Segun la pulsacion de teclas, vamos a llamar a los metodos de la clase NaveEspacial
 // Funcion de escuchar si pulsan una tecla
 document.addEventListener("keydown", (event) => {
@@ -72,19 +85,23 @@ document.addEventListener("keydown", (event) => {
       break;
     case "arrowup":
     case "w":
-      naveExplorer.mover("Norte");
+      naveExplorer.girar("norte");
+      naveExplorer.mover();
       break;
     case "arrowdown":
     case "s":
       naveExplorer.girar("sur");
+      naveExplorer.mover();
       break;
     case "arrowrigth":
     case "d":
-      naveExplorer.girar("Este");
+      naveExplorer.girar("este");
+      naveExplorer.mover();
       break;
     case "arrowleft":
     case "a":
-      naveExplorer.girar("Oeste");
+      naveExplorer.girar("oeste");
+      naveExplorer.mover();
       break;
 
 
